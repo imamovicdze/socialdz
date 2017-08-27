@@ -1,0 +1,19 @@
+.p-text{
+    text-align:center;
+}
+
+.p-right{
+    text-align:right;
+}
+.login-container{
+    margin-top:10%;
+}
+
+.time {
+    float: right;
+    font-size: 20px;
+}
+
+.category{
+    text-transform: capitalize;
+}
