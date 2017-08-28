@@ -4,7 +4,7 @@ include_once ('databaseService.php');
 
 $id = $_POST['id'];
 
-$isSuccess = true;
+$isSuccess = $db->deleteCommentById($id);
 
 if($isSuccess){
     echo "success";
