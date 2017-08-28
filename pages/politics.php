@@ -6,27 +6,27 @@
 <!-- * Time: 4:35 PM-->
 <!-- */-->
 <?php
-    include_once ("../services/databaseService.php");
-    session_start();
-    $id = $_SESSION['id'];
-    if($id == null){
-        header('Location: login.php');
-    }
-    $user = $db->getUserById($id);
+include_once ("../services/databaseService.php");
+session_start();
+$id = $_SESSION['id'];
+if($id == null){
+    header('Location: login.php');
+}
+$user = $db->getUserById($id);
 
-    $news = $db->getAllNews();
+$news = $db->getAllNewsByCategory("politics");
 ?>
 <html>
-    <?php include_once("partials\head.php"); ?>
+<?php include_once("partials\head.php"); ?>
 
-    <?php include_once("partials\header.php"); ?>
+<?php include_once("partials\header.php"); ?>
 
 <div class="container">
     <div class="row">
         <?php
-            foreach($news as $new){
-                if($user['is_admin']){
-                    echo ' <a href="/pages/single-news.php?id='.$new['ID'].'" class="link-block"><div class="col-sm-6 col-sm-offset-3">
+        foreach($news as $new){
+            if($user['is_admin']){
+                echo ' <a href="/pages/single-news.php?id='.$new['ID'].'" class="link-block"><div class="col-sm-6 col-sm-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>'.$new['title'].'
@@ -39,9 +39,9 @@
                              </div>
                         </div>
                     </div></a>';
-                }
-                else{
-                    echo ' <a href="/pages/single-news.php?id='.$new['ID'].'" class="link-block"><div class="col-sm-6 col-sm-offset-3">
+            }
+            else{
+                echo ' <a href="/pages/single-news.php?id='.$new['ID'].'" class="link-block"><div class="col-sm-6 col-sm-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3>'.$new['title'].'
@@ -53,9 +53,8 @@
                              </div>
                         </div>
                     </div></a>';
-                }
             }
-
+        }
         ?>
     </div>
     <?php
@@ -64,7 +63,6 @@
         echo '<script src="../assets/js/deleteNewsScript.js"></script>';
     }
     ?>
-    <script src="../assets/js/hoverLinks.js"></script>
 </div>
 
 

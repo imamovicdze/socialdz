@@ -11,17 +11,96 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">SocialDz</a>
+            <?php
+            if(!empty($user)){
+                echo '<a class="navbar-brand" href="/pages/landing.php">SocialDz</a>';
+            }
+            else{
+                echo '<a class="navbar-brand" href="/">SocialDz</a>';
+            }
+            ?>
         </div>
         <ul class="nav navbar-nav">
             <?php
-            if(strpos($uri, "landing") !== false) {
+            if(strpos($uri, "landing") !== false ) {
                 echo('
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Culture</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Politics</a></li>
-                    <li><a href="#">Economy</a></li>
+                    <li class="active"><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "sport") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li class="active"><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "culture") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li class="active"><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "politics") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li class="active"><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "economy") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li class="active" ><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "/news") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
+                ');
+                if($user['is_admin']){
+                    echo('<li class="active" ><a href="news.php">Create News</a></li>');
+                }
+            }
+            else if(strpos($uri, "single-news") !== false){
+                echo('
+                    <li><a href="/pages/landing.php">Home</a></li>
+                    <li><a href="/pages/culture.php">Culture</a></li>
+                    <li><a href="/pages/sport.php">Sport</a></li>
+                    <li><a href="/pages/politics.php">Politics</a></li>
+                    <li><a href="/pages/economy.php">Economy</a></li>
                 ');
                 if($user['is_admin']){
                     echo('<li><a href="news.php">Create News</a></li>');

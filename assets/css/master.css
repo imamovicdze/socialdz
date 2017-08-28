@@ -17,3 +17,26 @@
 .category{
     text-transform: capitalize;
 }
+
+.close{
+    float:right;
+}
+
+.hrule {
+    margin: 5px 0;
+    border-color: black;
+}
+
+.comment{
+    padding-bottom: 0;
+}
+.date{
+    float: right;
+}
+.deletecomment{
+    float:right;
+    color: red;
+}
+.panel-body p{
+    color:black !important;
+}

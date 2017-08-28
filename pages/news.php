@@ -12,7 +12,13 @@ $id = $_SESSION['id'];
 if($id == null){
     header('Location: login.php');
 }
+
 $user = $db->getUserById($id);
+
+// if User is not admin return to landing
+if(!$user['is_admin']){
+    header('Location: landing.php');
+}
 
 // Checks if message is passed by query
 $message;
@@ -30,9 +36,7 @@ if(isset( $_GET['message'])) {
     <div class="row">
         <?php
         if(!empty($message)){
-            echo '<div class="alert alert-success">
-                                        '.$message.'
-                                    </div>';
+            echo '<div class="alert alert-success">'.$message.'</div>';
         }
         ?>
         <div class="panel panel-default">
@@ -65,8 +69,6 @@ if(isset( $_GET['message'])) {
                             <!--<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>-->
                         </div>
                     </div>
-
-
 
                     <p class="p-right">
                         <button class="btn btn-primary" type="reset">Reset</button>
