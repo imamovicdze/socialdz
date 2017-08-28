@@ -1,0 +1,20 @@
+admin: dze@dze.com      sifra: asd
+user:  user@user.user    sifra: asd
+
+
+
+
+
+<VirtualHost *:80>
+	ServerName socialdz.dev 
+	DocumentRoot C:/wamp/www/socialdz
+	<Directory "C:/wamp/www/socialdz">
+		Options -Indexes
+		AllowOverride All
+		Require all granted
+	</Directory>
+</VirtualHost>
+
+127.0.0.1	socialdz.dev
+
+
